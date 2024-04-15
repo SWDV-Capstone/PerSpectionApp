@@ -1,0 +1,18 @@
+// From terminal TEST PostgreSQL sign in
+// psql -d test -h localhost -U capstoneuser
+
+// From terminal PROJECT PostgreSQL sign in
+// PGPASSWORD=KqAiCAkiyXEs0ivOiaGbgzAWNBytlVNM psql -h dpg-co07ge8cmk4c73b650tg-a.ohio-postgres.render.com -U admin perspectiveapp
+
+// GRANT ALL PRIVILEGES ON DATABASE perspectiveapp TO admin;
+// \conninfo
+
+// INSERT INTO tests (param1, param2, param3)
+// VALUES ('YYY', 95, '1920-01-01'), ('ZZZ', 55, '1970-01-01');
+
+// INSERT INTO tests (param1, param2, param3) VALUES ($1, $2, $3)
+// DELETE FROM tests WHERE id = 3;
+// UPDATE tests SET param1 = $1, param2 = $2, param3 = $3 WHERE id = $4
+// SELECT * FROM tests;
+// SELECT t FROM tests t WHERE t.param1 = $1
+// SELECT * FROM tests WHERE id = $1
