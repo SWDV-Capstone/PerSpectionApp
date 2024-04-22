@@ -1,4 +1,4 @@
-const pool = require('../../../database/db')
+const pool = require('../config/dataSource.ts')
 const queries = require('./queries')
 
 const getTests = (req, res) => {
