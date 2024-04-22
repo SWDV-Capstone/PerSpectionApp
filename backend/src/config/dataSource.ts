@@ -19,7 +19,7 @@ const pool = new Pool({
     user: 'admin',
     host: 'dpg-co07ge8cmk4c73b650tg-a',
     database: 'perspectiveapp',
-    password: 'KqAiCAkiyXEs0ivOiaGbgzAWNBytlVNM',
+    password: 'admin1234',
     port: 5432,
     synchronize: true,
 });
