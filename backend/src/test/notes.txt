@@ -1,11 +1,13 @@
 // From terminal TEST PostgreSQL sign in
 // psql -d test -h localhost -U capstoneuser
+// \c tests
 
 // From terminal PROJECT PostgreSQL sign in
 // PGPASSWORD=KqAiCAkiyXEs0ivOiaGbgzAWNBytlVNM psql -h dpg-co07ge8cmk4c73b650tg-a.ohio-postgres.render.com -U admin perspectiveapp
 
 // GRANT ALL PRIVILEGES ON DATABASE perspectiveapp TO admin;
 // \conninfo
+// \c perspectiveapp
 
 // INSERT INTO tests (param1, param2, param3)
 // VALUES ('YYY', 95, '1920-01-01'), ('ZZZ', 55, '1970-01-01');
