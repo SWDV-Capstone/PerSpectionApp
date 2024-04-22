@@ -32,7 +32,8 @@ sequelize.sync()
 
 // Define the routes
 app.get('/', (req, res) => {
-    res.send('Hello World!')
+    res.send('Hello Render!')
+    // res.send('Hello World!')
 })
 
 // app.use('/tests', testRoutes)
@@ -40,12 +41,3 @@ const port = process.env.PORT || 3000
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`)
 })
-
-
-// pool.initialize()
-//     .then(() => {
-//         console.log("Data Source initialized!")
-//     })
-//     .catch((err) => {
-//         console.error(err)
-//     })
