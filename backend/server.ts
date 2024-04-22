@@ -41,6 +41,7 @@ app.listen(port, () => {
     console.log(`Server is running on port ${port}`)
 })
 
+
 // pool.initialize()
 //     .then(() => {
 //         console.log("Data Source initialized!")
