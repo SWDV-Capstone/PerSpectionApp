@@ -11,6 +11,7 @@
 //   synchronize: true,
 // });
 
+
 // Set up the connection to the database
 const Pool = require('pg').Pool;
 
