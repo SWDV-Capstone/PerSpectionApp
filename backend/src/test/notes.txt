@@ -1,7 +1,7 @@
 // API-NAME: Capstone
 // API-KEY: rnd_QlRT4aDACUD02L5omEXEAcqTIdk7
 
-// POSTMAN: https://perspectionapp-server.onrender.com/
+// POSTMAN: https://perspectionapp-server.onrender.com/tests/1
 
 // \! clear
 // From terminal TEST PostgreSQL sign in
@@ -26,3 +26,20 @@
 // SELECT * FROM tests;
 // SELECT t FROM tests t WHERE t.param1 = $1
 // SELECT * FROM tests WHERE id = $1
+
+
+
+
+// TYPE ERROR FIXES
+// npm install -D typescript @types/express @types/node;
+// npm install dotenv pg typeorm
+// npm install --save-dev @types/node
+// npm install @types/node --save-dev
+
+// NODE ERROR FIXES
+// rm -rf node_modules
+// rm -f package-lock.json
+// npm cache clean --force
+// sudo chown -R 501:20 "/Users/jarrettzanders/.npm"
+// npm install
+//
