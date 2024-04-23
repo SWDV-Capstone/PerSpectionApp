@@ -1,8 +1,9 @@
 // API-NAME: Capstone
 // API-KEY: rnd_QlRT4aDACUD02L5omEXEAcqTIdk7
 
+// POSTMAN: https://perspectionapp-server.onrender.com/
 
-
+// \! clear
 // From terminal TEST PostgreSQL sign in
 // psql -d test -h localhost -U capstoneuser
 // \c tests
