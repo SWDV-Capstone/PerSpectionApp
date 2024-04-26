@@ -8,8 +8,11 @@ require('dotenv').config()
 const app = express()
 const port = process.env.PORT || 3000
 
-app.use(express.json())
-
+// app.use(express.json())
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    next();
+  });
 // Set up the connection to the database
 // const sequelize = new Sequelize(process.env.DB_URL, {
 //     dialect: 'postgres',
@@ -33,7 +36,7 @@ app.use(express.json())
 
 // Define the routes
 app.get('/', (req, res) => {
-    res.send('Hello Render!')
+    res.send('Hello Renders!')
     // res.send('Hello World!')
 })
 
