@@ -4,7 +4,14 @@ var testRoutes = require('./src/test/routes');
 require('dotenv').config();
 var Sequelize = require('sequelize').Sequelize;
 var app = express();
-app.use(express.json());
+// app.use(express.json());
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    next();
+  });
+
+
+
 // Set up the connection to the database
 var sequelize = new Sequelize(process.env.DB_URL, {
     dialect: 'postgres',
