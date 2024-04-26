@@ -3,12 +3,12 @@ import axios from 'axios'
 import { ref } from 'vue'
 // import { useRoute } from 'vue-router'
 
-export type Test = { id: number, param1: string, param2: number, param: string }
+export type test = { id: number, param1: string, param2: number, param: string }
 
 export const useTestStore = defineStore( 'testStore', () => {
     const someState = ref('Hello Pinia')
-    const testList = ref<Test[]>([])
-    const baseUrl = 'https://perspectionapp-server.onrender.com/tests/'
+    const testList = ref<test[]>([])
+    const baseUrl = 'https://perspectionapp-server.onrender.com/tests/9'
 
     async function fetchTests() {
         try {

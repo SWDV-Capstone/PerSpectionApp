@@ -1,5 +1,6 @@
 <template>
   <ion-page>
+    <HeaderComponent />
     <ion-content :fullscreen="true">
       <TestComponent />
     </ion-content>
@@ -8,6 +9,7 @@
 
 <script setup lang="ts">
 import { IonContent, IonPage } from '@ionic/vue';
+import HeaderComponent from '@/components/HeaderFooter/headerComponent.vue';
 import TestComponent from '@/components/testComps/TestComponent.vue';
 </script>
 

@@ -1,6 +1,8 @@
 <template class="TestComponent">
     <ion-card>
-        <ion-card-header></ion-card-header>
+        <ion-card-header>
+            <ion-card-title>{{ store.someState }}</ion-card-title>
+        </ion-card-header>
         <ion-card-content>
             <ion-list>
                 <ion-item
@@ -15,7 +17,7 @@
     </ion-card>
 </template>
 <script setup lang="ts">
-import { IonCard, IonCardContent, IonList, IonItem, IonLabel } from '@ionic/vue';
+import { IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonList, IonItem, IonLabel } from '@ionic/vue';
 import { onMounted } from 'vue';
 import { useTestStore } from '@/stores/testStore';
 
