@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory } from '@ionic/vue-router';
 import { RouteRecordRaw } from 'vue-router';
 
+import TestPage from '../views/TestPage.vue';
+
 const routes: Array<RouteRecordRaw> = [
   {
     path: '',
@@ -9,6 +11,11 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/folder/:id',
     component: () => import ('../views/FolderPage.vue')
+  },
+  {
+    path: '/TestPage/:id',
+    name: 'TestPage',
+    component: TestPage
   }
 ]
 
