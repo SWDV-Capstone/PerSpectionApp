@@ -56,6 +56,18 @@ const appPages = [
     url: '/TestPage/TestPage',
     iosIcon: paperPlaneOutline,
     mdIcon: paperPlaneSharp,
+  },
+  {
+    title: 'PointsPage',
+    url: '/PointsPage/PointsPage',
+    iosIcon: paperPlaneOutline,
+    mdIcon: paperPlaneSharp,
+  },
+  {
+    title: 'InspectionsPage',
+    url: '/InspectionsPage/InspectionsPage',
+    iosIcon: paperPlaneOutline,
+    mdIcon: paperPlaneSharp,
   }
 ];
 // const labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];

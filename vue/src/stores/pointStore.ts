@@ -1,10 +1,32 @@
 import { defineStore } from 'pinia'
+import axios from 'axios'
 import { ref } from 'vue'
-// import axios from 'axios'
+// import { useRoute } from 'vue-router'
 
-export const useTestStore = defineStore( 'testStore', () => {
-    const someState = ref('Hello Pinia')
-    return { someState }
+export type point = { id: number, param1: string, param2: number, param3: string }
+
+export const usePointStore = defineStore( 'pointStore', () => {
+    const someState = ref('Hello Pinia Points')
+    const pointList = ref([])
+    // const pointList = ref<test[]>([])
+    // const baseUrl = 'https://perspectionapp-server.onrender.com/points/'
+    const baseUrl = 'https://perspectionapp-server.onrender.com/tests/'
+
+    async function fetchPoints() {
+        try {
+            const response = await axios.get(baseUrl)
+            pointList.value = response.data
+            console.log(pointList.value)
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
+    return { 
+        someState,
+        pointList,
+        fetchPoints
+     }
     },
     {
         persist: true,
