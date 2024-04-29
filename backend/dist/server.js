@@ -31,7 +31,7 @@ app.use(function (req, res, next) {
 //     })
 // Define the routes
 app.get('/', function (req, res) {
-    res.send('Hello Render!');
+    res.send('Hello Renders!');
     // res.send('Hello World!')
 });
 app.use('/tests', testRoutes);
