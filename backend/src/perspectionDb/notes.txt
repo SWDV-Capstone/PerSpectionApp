@@ -20,6 +20,7 @@
 // INSERT INTO tests (param1, param2, param3)
 // VALUES ('YYY', 95, '1920-01-01'), ('ZZZ', 55, '1970-01-01');
 
+// CREATE TABLE points (param1 VARCHAR(255), param2 INT, param3 VARCHAR(255));
 // INSERT INTO tests (param1, param2, param3) VALUES ($1, $2, $3)
 // DELETE FROM tests WHERE id = 3;
 // UPDATE tests SET param1 = $1, param2 = $2, param3 = $3 WHERE id = $4

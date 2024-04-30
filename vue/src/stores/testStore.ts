@@ -9,7 +9,7 @@ export const useTestStore = defineStore( 'testStore', () => {
     const someState = ref('Hello Pinia')
     const testList = ref([])
     // const testList = ref<test[]>([])
-    const baseUrl = 'https://perspectionapp-server.onrender.com/perspectionDb/'
+    const baseUrl = 'https://perspectionapp-server.onrender.com/perspectionDb/tests/'
 
     async function fetchTests() {
         try {
