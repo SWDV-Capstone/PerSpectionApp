@@ -10,7 +10,7 @@ export const usePointStore = defineStore( 'pointStore', () => {
     const pointList = ref([])
     // const pointList = ref<test[]>([])
     // const baseUrl = 'https://perspectionapp-server.onrender.com/points/'
-    const baseUrl = 'https://perspectionapp-server.onrender.com/tests/'
+    const baseUrl = 'https://perspectionapp-server.onrender.com/perspectionDb/'
 
     async function fetchPoints() {
         try {

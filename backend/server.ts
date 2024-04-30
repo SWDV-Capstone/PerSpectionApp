@@ -35,13 +35,15 @@ app.use((req, res, next) => {
 //     })
 
 // Define the routes
-app.get('/', (req, res) => {
-    res.send('Hello Renders!')
-    // res.send('Hello World!')
+app.get('/', (req, res, next) => {
+    res.send('Hello Middleware!')
+    next()
 })
 
 app.use('/perspectionDb', perspectionRoutes)
-
+// app.use(/\/tests|\/perspectionDb/, function (req, res, next) {
+//     next()
+// })
 app.listen(port, () => {
     console.log(`App listening on port ${port}`)
 })

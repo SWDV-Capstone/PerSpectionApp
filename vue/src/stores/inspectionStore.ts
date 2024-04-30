@@ -10,7 +10,7 @@ export const useInspectionStore = defineStore( 'inspectionStore', () => {
     const inspectionList = ref([])
     // const inspectionList = ref<test[]>([])
     // const baseUrl = 'https://perspectionapp-server.onrender.com/inspections/'
-    const baseUrl = 'https://perspectionapp-server.onrender.com/tests/'
+    const baseUrl = 'https://perspectionapp-server.onrender.com/perspectionDb/'
 
     async function fetchInspections() {
         try {
