@@ -11,7 +11,7 @@ router.post('/', controller.addTestRow)
 router.put('/:id', controller.updateTestRow)
 
 // POINT ROUTES
-router.get('/', controller.getPoints)
+router.get('/points/', controller.getPoints)
 router.get('/:id', controller.getPointById)
 router.delete('/:id', controller.deletePointRow)
 router.post('/', controller.addPointRow)
