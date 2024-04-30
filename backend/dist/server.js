@@ -30,11 +30,14 @@ app.use(function (req, res, next) {
 //         console.log('Error connecting to database', err)
 //     })
 // Define the routes
-app.get('/', function (req, res) {
-    res.send('Hello Renders!');
-    // res.send('Hello World!')
+app.get('/', function (req, res, next) {
+    res.send('Hello Middleware!');
+    next();
 });
 app.use('/perspectionDb', perspectionRoutes);
+// app.use(/\/tests|\/perspectionDb/, function (req, res, next) {
+//     next()
+// })
 app.listen(port, function () {
     console.log("App listening on port ".concat(port));
 });
