@@ -13,8 +13,8 @@ var port = process.env.PORT || 3000;
 //     next();
 //   });
 app.use(function (req, res, next) {
-    res.header("Access-Control-Allow-Origin", "https://perspectionapp.onrender.com"); // update to match the domain you will make the request from
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
+    res.header("Access-Control-Allow-Headers", "*");
     next();
 });
 // Set up the connection to the database
@@ -39,6 +39,12 @@ app.use(function (req, res, next) {
 // Define the routes
 app.get('/', function (req, res) {
     res.send('Hello Middleware!');
+});
+app.get('/tests', function (req, res) {
+    res.send('Hello Tests!');
+});
+app.get('/points', function (req, res) {
+    res.send('Hello Points!');
 });
 app.use('/perspectionDb', perspectionRoutes);
 // app.use(/\/tests|\/perspectionDb/, function (req, res, next) {
