@@ -65,18 +65,18 @@ export const usePointStore = defineStore( 'pointStore', () => {
         return newPointList.sort((a: point, b: point) => (a.param2 > b.param2)? 1 :1)
     })
 
-    function togglePoint(id) {
-        const pointToggle = currentInspectionPoints.value.find((point: point) => point.id === id)
-        const pointOpen = currentInspectionPoints.value.find((point: point) => point.open === true)
-        if (pointToggle && pointOpen && pointToggle.id !== pointOpen.id) {
-            pointOpen.open = false
-        }
-        else {
-            if (pointOpen)
-                {pointOpen.open = false}
-            pointToggle.open = true
-        }
-    }
+    // function togglePoint(id) {
+    //     const pointToggle = currentInspectionPoints.value.find((point: point) => point.id === id)
+    //     const pointOpen = currentInspectionPoints.value.find((point: point) => point.open === true)
+    //     if (pointToggle && pointOpen && pointToggle.id !== pointOpen.id) {
+    //         pointOpen.open = false
+    //     }
+    //     else {
+    //         if (pointOpen)
+    //             {pointOpen.open = false}
+    //         pointToggle.open = true
+    //     }
+    // }
 
     return { 
         someState, pointList, pointStatus, currentInspectionPoints, id,
@@ -85,7 +85,7 @@ export const usePointStore = defineStore( 'pointStore', () => {
         deletePoint,
         updatePoint,
         updateStatus,
-        togglePoint
+        // togglePoint
      }
     },
     {
