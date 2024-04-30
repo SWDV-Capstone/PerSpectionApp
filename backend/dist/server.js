@@ -4,11 +4,17 @@ var perspectionRoutes = require('./src/perspectionDb/routes');
 require('dotenv').config();
 // const { Sequelize } = require('sequelize')
 var app = express();
+app.use(cors());
 var port = process.env.PORT || 3000;
 // app.use(express.json())
+// app.use((req, res, next) => {
+//     req.header('Access-Control-Allow-Origin', '*');
+//     res.header('Access-Control-Allow-Origin', '*');
+//     next();
+//   });
 app.use(function (req, res, next) {
-    req.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Origin', '*');
+    res.header("Access-Control-Allow-Origin", "https://perspectionapp.onrender.com"); // update to match the domain you will make the request from
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
 });
 // Set up the connection to the database

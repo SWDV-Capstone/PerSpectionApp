@@ -6,14 +6,22 @@ require('dotenv').config()
 // const { Sequelize } = require('sequelize')
 
 const app = express()
+app.use(cors());
 const port = process.env.PORT || 3000
 
 // app.use(express.json())
-app.use((req, res, next) => {
-    req.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Origin', '*');
+// app.use((req, res, next) => {
+//     req.header('Access-Control-Allow-Origin', '*');
+//     res.header('Access-Control-Allow-Origin', '*');
+//     next();
+//   });
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "https://perspectionapp.onrender.com"); // update to match the domain you will make the request from
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
-  });
+});
+
+
 // Set up the connection to the database
 // const sequelize = new Sequelize(process.env.DB_URL, {
 //     dialect: 'postgres',
