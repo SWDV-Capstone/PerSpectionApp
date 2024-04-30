@@ -4,7 +4,7 @@ const controller = require('./controller')
 const router = Router()
 
 // TEST ROUTES
-router.get('/', controller.getTests)
+router.get('/tests/', controller.getTests)
 router.get('/:id', controller.getTestById)
 router.delete('/:id', controller.deleteTestRow)
 router.post('/', controller.addTestRow)
