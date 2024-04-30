@@ -35,9 +35,8 @@ app.use((req, res, next) => {
 //     })
 
 // Define the routes
-app.get('/', (req, res, next) => {
+app.get('/', (req, res) => {
     res.send('Hello Middleware!')
-    next()
 })
 
 app.use('/perspectionDb', perspectionRoutes)
