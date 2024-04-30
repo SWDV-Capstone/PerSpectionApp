@@ -53,6 +53,9 @@ app.get('/tests', (req, res) => {
 app.get('/points', (req, res) => {
     res.send('Hello Points!')
 })
+app.get('/perspectionDb', (req, res) => {
+    res.send('Hello PerspectionDb!')
+})
 
 app.use('/perspectionDb', perspectionRoutes)
 // app.use(/\/tests|\/perspectionDb/, function (req, res, next) {
