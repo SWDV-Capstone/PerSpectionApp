@@ -1,6 +1,6 @@
 const express = require('express')
 const cors = require("cors");
-const testRoutes = require('./src/test/routes')
+const perspectionRoutes = require('./src/perspectionDb/routes')
 
 require('dotenv').config()
 // const { Sequelize } = require('sequelize')
@@ -40,7 +40,7 @@ app.get('/', (req, res) => {
     // res.send('Hello World!')
 })
 
-app.use('/tests', testRoutes)
+app.use('/perspectionDb', perspectionRoutes)
 
 app.listen(port, () => {
     console.log(`App listening on port ${port}`)

@@ -1,5 +1,5 @@
 const pool = require('../config/dataSource.ts')
-const queries = require('./queries')
+const queries = require('./queries.js')
 
 const getTests = (req, res) => {
     console.log('GetTests controller')

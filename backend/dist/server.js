@@ -1,6 +1,6 @@
 var express = require('express');
 var cors = require("cors");
-var testRoutes = require('./src/test/routes');
+var perspectionRoutes = require('./src/perspectionDb/routes');
 require('dotenv').config();
 // const { Sequelize } = require('sequelize')
 var app = express();
@@ -34,7 +34,7 @@ app.get('/', function (req, res) {
     res.send('Hello Renders!');
     // res.send('Hello World!')
 });
-app.use('/tests', testRoutes);
+app.use('/perspectionDb', perspectionRoutes);
 app.listen(port, function () {
     console.log("App listening on port ".concat(port));
 });
