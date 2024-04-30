@@ -30,9 +30,8 @@ app.use(function (req, res, next) {
 //         console.log('Error connecting to database', err)
 //     })
 // Define the routes
-app.get('/', function (req, res, next) {
+app.get('/', function (req, res) {
     res.send('Hello Middleware!');
-    next();
 });
 app.use('/perspectionDb', perspectionRoutes);
 // app.use(/\/tests|\/perspectionDb/, function (req, res, next) {
