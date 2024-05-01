@@ -17,7 +17,7 @@ app.get('/', (req, res, next) => {
 //     next();
 // })
 
-const testRoutes = require('./src/tests/routes')
+const testRoutes = require('./src/tests/tests.routes')
 app.use('/tests', testRoutes)
 app.get('/tests', (req, res, next) => {
     res.send('Hello Tests Server!')

@@ -13,7 +13,7 @@ app.get('/', function (req, res, next) {
 //     res.send('Hello PerspectionDb Server!')
 //     next();
 // })
-var testRoutes = require('./src/tests/routes');
+var testRoutes = require('./src/tests/tests.routes');
 app.use('/tests', testRoutes);
 app.get('/tests', function (req, res, next) {
     res.send('Hello Tests Server!');

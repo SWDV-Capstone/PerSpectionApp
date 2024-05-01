@@ -1,14 +1,18 @@
 const { Router } = require('express')
-const controller = require('./controller')
+const testsController = require('./tests.controller')
 
-const router = Router()
+const testsRouter = Router()
 
-// TEST ROUTES
-router.get('/tests/', controller.getTests)
-router.get('/:id', controller.getTestById)
-router.delete('/:id', controller.deleteTestRow)
-router.post('/', controller.addTestRow)
-router.put('/:id', controller.updateTestRow)
+// TESTS ROUTES
+testsController.get('/tests/', testsController.getTests)
+testsController.get('/:id', testsController.getTestById)
+testsController.delete('/:id', testsController.deleteTestRow)
+testsController.post('/', testsController.addTestRow)
+testsController.put('/:id', testsController.updateTestRow)
+
+module.exports = testsRouter
+
+
 
 // POINT ROUTES
 // router.get('/points/', controller.getPoints)
@@ -24,4 +28,3 @@ router.put('/:id', controller.updateTestRow)
 // router.post('/', controller.addInspectionRow)
 // router.put('/:id', controller.updateInspectionRow)
 
-module.exports = router

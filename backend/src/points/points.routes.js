@@ -3,7 +3,7 @@ const pointsController = require('./points.controllers')
 
 const pointsRouter = Router()
 
-// POINT ROUTES
+// POINTS ROUTES
 pointsRouter.get('/', pointsController.getPoints)
 pointsRouter.get('/:id', pointsController.getPointById)
 pointsRouter.delete('/:id', pointsController.deletePointRow)
