@@ -1,8 +1,10 @@
 import { defineStore } from 'pinia'
 import axios from 'axios'
-import { computed, ref } from 'vue'
-import { useRoute } from 'vue-router'
+import { ref } from 'vue'
+// import { computed, ref } from 'vue'
+// import { useRoute } from 'vue-router'
 
+export type pointList = { id: number, param1: string, param2: number, param3: string }[]
 export type point = { id: number, param1: string, param2: number, param3: string }
 
 export const usePointStore = defineStore( 'pointStore', () => {
@@ -10,13 +12,14 @@ export const usePointStore = defineStore( 'pointStore', () => {
     const pointList = ref([])
     // const pointList = ref<test[]>([])
     // const baseUrl = 'https://perspectionapp-server.onrender.com/points/'
-    const baseUrl = 'https://perspectionapp-server.onrender.com/perspectionDb/points/'
+    const baseUrl = 'https://perspectionapp-server.onrender.com/points/'
 
     async function fetchPoints() {
+        console.log('Fetching Points')
         try {
             const response = await axios.get(baseUrl)
             pointList.value = response.data
-            console.log(pointList.value)
+            console.log('Points fetched: ', pointList.value)
         } catch (error) {
             console.error(error)
         }
@@ -47,23 +50,23 @@ export const usePointStore = defineStore( 'pointStore', () => {
         }
     }
     // Update status of point measurement
-    const pointStatus = ref(false)
-    const id = ref('')
-    async function updateStatus(data) {
-        try {
-            const response = await axios.patch(baseUrl + data.id, data)
-            pointList.value = response.data
-        }
-        catch (error) {
-            console.error(error)
-        }
-    }
+    // const pointStatus = ref(false)
+    // const id = ref('')
+    // async function updateStatus(data) {
+    //     try {
+    //         const response = await axios.patch(baseUrl + data.id, data)
+    //         pointList.value = response.data
+    //     }
+    //     catch (error) {
+    //         console.error(error)
+    //     }
+    // }
     // Find the points for the current inspection
-    const route = useRoute()
-    const currentInspectionPoints = computed(() => {
-        const newPointList = pointList.value.filter((point: point) => point.param1 === route.params.id)
-        return newPointList.sort((a: point, b: point) => (a.param2 > b.param2)? 1 :1)
-    })
+    // const route = useRoute()
+    // const currentInspectionPoints = computed(() => {
+    //     const newPointList = pointList.value.filter((point: point) => point.param1 === route.params.id)
+    //     return newPointList.sort((a: point, b: point) => (a.param2 > b.param2)? 1 :1)
+    // })
 
     // function togglePoint(id) {
     //     const pointToggle = currentInspectionPoints.value.find((point: point) => point.id === id)
@@ -79,12 +82,16 @@ export const usePointStore = defineStore( 'pointStore', () => {
     // }
 
     return { 
-        someState, pointList, pointStatus, currentInspectionPoints, id,
+        someState,
+        pointList,
+        // pointStatus,
+        // currentInspectionPoints,
+        // id,
         fetchPoints,
         addPoint,
         deletePoint,
         updatePoint,
-        updateStatus,
+        // updateStatus,
         // togglePoint
      }
     },

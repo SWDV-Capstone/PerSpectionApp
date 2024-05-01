@@ -3,9 +3,9 @@
     <HeaderComponent />
     <ion-content :fullscreen="true">
       <PointComponent />
-      <PointAccordion 
+      <!-- <PointAccordion 
         :points="poinStore.currentInspectionPoints"
-      />
+      /> -->
     </ion-content>
   </ion-page>
 </template>
@@ -15,7 +15,7 @@ import { IonContent, IonPage } from '@ionic/vue';
 import { onBeforeMount } from 'vue';
 import HeaderComponent from '@/components/HeaderFooter/headerComponent.vue';
 import PointComponent from '@/components/pointComps/PointComponent.vue';
-import PointAccordion from '@/components/pointComps/PointAccordion.vue';
+// import PointAccordion from '@/components/pointComps/PointAccordion.vue';
 
 import { usePointStore } from '@/stores/pointStore';
 const poinStore = usePointStore();

@@ -1,10 +1,10 @@
 const pool = require('../config/dataSource.ts')
-const queries = require('./queries')
+const pointsQueries = require('./points.queries.js')
 
 const getPoints = (req, res) => {
     console.log('GetPoints controller')
 
-    pool.query(queries.getPoints, (error, results) => {
+    pool.query(pointsQueries.getPoints, (error, results) => {
         if (error) throw error
         res.status(200).json(results.rows)
     })
@@ -14,7 +14,7 @@ const getPointById = (req, res) => {
     const id = parseInt(req.params.id)
     console.log('GetPointById controller')
 
-    pool.query(queries.getPointById, [id], (error, results) => {
+    pool.query(pointsQueries.getPointById, [id], (error, results) => {
         if (error) throw error
         res.status(200).json(results.rows)
     })
@@ -25,7 +25,7 @@ const addPointRow = (req, res) => {
     console.log('AddPointRow controller')
 
     // check if param already exists
-    pool.query(queries.checkIfParamExists, [param1], (error, results) => {
+    pool.query(pointsQueries.checkIfParamExists, [param1], (error, results) => {
         if (results.rows.length) {
             res.send('Point param exists')
             // console.log('Point param already exists')
@@ -33,7 +33,7 @@ const addPointRow = (req, res) => {
         console.log('Point param does not exist, adding...')
 
         // If not, Add point row
-        pool.query(queries.addPointRow, [param1, param2, param3], (error, results) => {
+        pool.query(pointsQueries.addPointRow, [param1, param2, param3], (error, results) => {
             if (error) throw error
             // res.status(201).send('point created').json(results.rows)
             res.status(201).send('Point created')
@@ -47,11 +47,11 @@ const deletePointRow = (req, res) => {
     console.log('DeletePointRow controller')
 
     // check if point exists
-    pool.query(queries.getPointById, [id], (error, results) => {
+    pool.query(pointsQueries.getPointById, [id], (error, results) => {
         if (!results.rows.length) {
             res.send('Point not found')
         }
-        pool.query(queries.deletePointRow, [id], (error, results) => {
+        pool.query(pointsQueries.deletePointRow, [id], (error, results) => {
             if (error) throw error
         })
         res.status(200).send('Point deleted')
@@ -64,11 +64,11 @@ const updatePointRow = (req, res) => {
     console.log('UpdatePointRow controller')
 
     // check if point exists
-    pool.query(queries.getPointById, [id], (error, results) => {
+    pool.query(pointsQueries.getPointById, [id], (error, results) => {
         if (!results.rows.length) {
             res.send('Point not found')
         }
-        pool.query(queries.updatePointRow, [param1, param2, param3, id], (error, results) => {
+        pool.query(pointsQueries.updatePointRow, [param1, param2, param3, id], (error, results) => {
             if (error) throw error
         })
         res.status(200).send('Point updated')
