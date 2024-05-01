@@ -31,11 +31,6 @@ import { useTestStore } from '@/stores/testStore';
 
 const store = useTestStore();
 
-// const testFunction = () => {
-//     console.log('Test Function');
-
-// }
-
 onMounted(() => {
     console.log('Mounted');
     store.fetchTests();

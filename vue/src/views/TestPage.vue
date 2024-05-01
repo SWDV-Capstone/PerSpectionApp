@@ -9,8 +9,17 @@
 
 <script setup lang="ts">
 import { IonContent, IonPage } from '@ionic/vue';
+import { onBeforeMount } from 'vue';
 import HeaderComponent from '@/components/HeaderFooter/headerComponent.vue';
 import TestComponent from '@/components/testComps/TestComponent.vue';
+
+import { useTestStore } from '@/stores/testStore';
+const testStore = useTestStore();
+
+onBeforeMount(() => {
+  testStore.fetchTests();
+});
+
 </script>
 
 <style scoped>

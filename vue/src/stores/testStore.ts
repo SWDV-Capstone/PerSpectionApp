@@ -8,16 +8,17 @@ export type testList = { id: number, param1: string, param2: number, param3: str
 export type test = { id: number, param1: string, param2: number, param3: string }
 
 export const useTestStore = defineStore( 'testStore', () => {
-    const someState = ref('Hello Pinia')
+    const someState = ref('Hello Pinia Tests')
     const testList = ref([])
     // const testList = ref<test[]>([])
     const baseUrl = 'https://perspectionapp-server.onrender.com/tests/'
 
     async function fetchTests() {
+        console.log('Fetching Tests')
         try {
             const response = await axios.get(baseUrl)
             testList.value = response.data
-            console.log(testList.value)
+            console.log('Tests fetched:', testList.value)
         } catch (error) {
             console.error(error)
         }
