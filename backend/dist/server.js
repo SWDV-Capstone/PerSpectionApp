@@ -1,22 +1,47 @@
 var express = require('express');
-var cors = require("cors");
-var perspectionRoutes = require('./src/perspectionDb/routes');
-require('dotenv').config();
-// const { Sequelize } = require('sequelize')
 var app = express();
-app.use(cors());
-var port = process.env.PORT || 3000;
 // app.use(express.json())
-// app.use((req, res, next) => {
-//     req.header('Access-Control-Allow-Origin', '*');
-//     res.header('Access-Control-Allow-Origin', '*');
-//     next();
-//   });
+var cors = require("cors");
+app.use(cors());
+app.get('/', function (req, res, next) {
+    res.send('Hello Middleware Server!');
+    next();
+});
+var perspectionRoutes = require('./src/perspectionDb/routes');
+app.use('/perspectionDb', perspectionRoutes);
+app.get('/perspectionDb', function (req, res, next) {
+    res.send('Hello PerspectionDb Server!');
+    next();
+});
+var testRoutes = require('./src/tests/routes');
+app.use('/tests', testRoutes);
+app.get('/tests', function (req, res, next) {
+    res.send('Hello Tests Server!');
+    next();
+});
+var pointRoutes = require('./src/points/points.routes');
+app.use('/points', pointRoutes);
+app.get('/points', function (req, res, next) {
+    res.send('Hello Points Server!');
+    next();
+});
+var inspectionRoutes = require('./src/inspections/routes');
+app.use('/inspections', inspectionRoutes);
+app.get('/inspections', function (req, res, next) {
+    res.send('Hello Inspections Server!');
+    next();
+});
+require('dotenv').config();
+var port = process.env.PORT || 3000;
 app.use(function (req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
+    res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "*");
     next();
 });
+app.listen(port, function () {
+    console.log("App listening on port ".concat(port));
+});
+// const { Sequelize } = require('sequelize')
 // Set up the connection to the database
 // const sequelize = new Sequelize(process.env.DB_URL, {
 //     dialect: 'postgres',
@@ -36,23 +61,3 @@ app.use(function (req, res, next) {
 //     .catch((err) => {
 //         console.log('Error connecting to database', err)
 //     })
-// Define the routes
-app.get('/', function (req, res) {
-    res.send('Hello Middleware!');
-});
-app.get('/tests', function (req, res) {
-    res.send('Hello Tests!');
-});
-app.get('/points', function (req, res) {
-    res.send('Hello Points!');
-});
-app.get('/perspectionDb', function (req, res) {
-    res.send('Hello PerspectionDb!');
-});
-app.use('/perspectionDb', perspectionRoutes);
-// app.use(/\/tests|\/perspectionDb/, function (req, res, next) {
-//     next()
-// })
-app.listen(port, function () {
-    console.log("App listening on port ".concat(port));
-});
