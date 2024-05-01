@@ -11,7 +11,6 @@ export const usePointStore = defineStore( 'pointStore', () => {
     const someState = ref('Hello Pinia Points')
     const pointList = ref([])
     // const pointList = ref<test[]>([])
-    // const baseUrl = 'https://perspectionapp-server.onrender.com/points/'
     const baseUrl = 'https://perspectionapp-server.onrender.com/points/'
 
     async function fetchPoints() {

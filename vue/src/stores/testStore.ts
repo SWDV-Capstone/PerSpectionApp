@@ -1,15 +1,17 @@
 import { defineStore } from 'pinia'
 import axios from 'axios'
 import { ref } from 'vue'
+// import { computed, ref } from 'vue'
 // import { useRoute } from 'vue-router'
 
+export type testList = { id: number, param1: string, param2: number, param3: string }[]
 export type test = { id: number, param1: string, param2: number, param3: string }
 
 export const useTestStore = defineStore( 'testStore', () => {
     const someState = ref('Hello Pinia')
     const testList = ref([])
     // const testList = ref<test[]>([])
-    const baseUrl = 'https://perspectionapp-server.onrender.com/perspectionDb/tests/'
+    const baseUrl = 'https://perspectionapp-server.onrender.com/tests/'
 
     async function fetchTests() {
         try {
