@@ -4,11 +4,11 @@ const testsController = require('./tests.controller')
 const testsRouter = Router()
 
 // TESTS ROUTES
-testsController.get('/tests/', testsController.getTests)
-testsController.get('/:id', testsController.getTestById)
-testsController.delete('/:id', testsController.deleteTestRow)
-testsController.post('/', testsController.addTestRow)
-testsController.put('/:id', testsController.updateTestRow)
+testsRouter.get('/tests/', testsController.getTests)
+testsRouter.get('/:id', testsController.getTestById)
+testsRouter.delete('/:id', testsController.deleteTestRow)
+testsRouter.post('/', testsController.addTestRow)
+testsRouter.put('/:id', testsController.updateTestRow)
 
 module.exports = testsRouter
 
