@@ -3,14 +3,13 @@ import axios from 'axios'
 import { ref } from 'vue'
 // import { useRoute } from 'vue-router'
 
+export type inspectionList = { id: number, param1: string, param2: number, param3: string }[]
 export type inspection = { id: number, param1: string, param2: number, param3: string }
 
 export const useInspectionStore = defineStore( 'inspectionStore', () => {
     const someState = ref('Hello Pinia Inspections')
     const inspectionList = ref([])
-    // const inspectionList = ref<test[]>([])
-    // const baseUrl = 'https://perspectionapp-server.onrender.com/inspections/'
-    const baseUrl = 'https://perspectionapp-server.onrender.com/perspectionDb/'
+    const baseUrl = 'https://perspectionapp-server.onrender.com/inspections/'
 
     async function fetchInspections() {
         try {

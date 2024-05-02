@@ -9,8 +9,16 @@
 
 <script setup lang="ts">
 import { IonContent, IonPage } from '@ionic/vue';
+import { onBeforeMount } from 'vue';
 import HeaderComponent from '@/components/HeaderFooter/headerComponent.vue';
 import InspectionComponent from '@/components/inspectionComps/InspectionComponent.vue';
+
+import { useInspectionStore } from '@/stores/inspectionStore';
+const inspectionStore = useInspectionStore();
+
+onBeforeMount(() => {
+  inspectionStore.fetchInspections();
+});
 </script>
 
 <style scoped>

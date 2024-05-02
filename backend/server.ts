@@ -10,13 +10,6 @@ app.get('/', (req, res, next) => {
     next();
 })
 
-// const perspectionRoutes = require('./src/perspectionDb/routes')
-// app.use('/perspectionDb', perspectionRoutes)
-// app.get('/perspectionDb', (req, res, next) => {
-//     res.send('Hello PerspectionDb Server!')
-//     next();
-// })
-
 const testRoutes = require('./src/tests/tests.routes')
 app.use('/tests', testRoutes)
 app.get('/tests', (req, res, next) => {
@@ -31,12 +24,12 @@ app.get('/points', (req, res, next) => {
     next();
 })
 
-// const inspectionRoutes = require('./src/inspections/routes')
-// app.use('/inspections', inspectionRoutes)
-// app.get('/inspections', (req, res, next) => {
-//     res.send('Hello Inspections Server!')
-//     next();
-// })
+const inspectionRoutes = require('./src/inspections/inspections.routes')
+app.use('/inspections', inspectionRoutes)
+app.get('/inspections', (req, res, next) => {
+    res.send('Hello Inspections Server!')
+    next();
+})
 
 require('dotenv').config()
 

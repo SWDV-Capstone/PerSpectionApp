@@ -1,13 +1,13 @@
 // Seperated from coltroller to keep code clean
 
 // TEST QUERIES
-const getTests = "SELECT * FROM tests"
-const getTestById = "SELECT * FROM tests WHERE id = $1"
-const deleteTestRow = "DELETE FROM tests WHERE id = $1"
-const addTestRow = "INSERT INTO tests (param1, param2, param3) VALUES ($1, $2, $3)"
-const checkIfTestParamExists = "SELECT t FROM tests t WHERE t.param1 = $1"
+const getTests = "SELECT * FROM tests" // GET
+const getTestById = "SELECT * FROM tests WHERE id = $1" // GET
+const deleteTestRow = "DELETE FROM tests WHERE id = $1" // DELETE
+const addTestRow = "INSERT INTO tests (param1, param2, param3) VALUES ($1, $2, $3)" // POST
+const checkIfTestParamExists = "SELECT t FROM tests t WHERE t.param1 = $1" // POST
 // const updateTestRow = "UPDATE tests SET param1 = $1 WHERE id = $2"
-const updateTestRow = "UPDATE tests SET param1 = $1, param2 = $2, param3 = $3 WHERE id = $4"
+const updateTestRow = "UPDATE tests SET param1 = $1, param2 = $2, param3 = $3 WHERE id = $4" // PUT
 
 // POINT QUERIES
 // const getPoints = "SELECT * FROM points"

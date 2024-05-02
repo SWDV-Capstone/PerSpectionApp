@@ -7,12 +7,6 @@ app.get('/', function (req, res, next) {
     res.send('Hello Middleware Server!');
     next();
 });
-// const perspectionRoutes = require('./src/perspectionDb/routes')
-// app.use('/perspectionDb', perspectionRoutes)
-// app.get('/perspectionDb', (req, res, next) => {
-//     res.send('Hello PerspectionDb Server!')
-//     next();
-// })
 var testRoutes = require('./src/tests/tests.routes');
 app.use('/tests', testRoutes);
 app.get('/tests', function (req, res, next) {
@@ -25,12 +19,12 @@ app.get('/points', function (req, res, next) {
     res.send('Hello Points Server!');
     next();
 });
-// const inspectionRoutes = require('./src/inspections/routes')
-// app.use('/inspections', inspectionRoutes)
-// app.get('/inspections', (req, res, next) => {
-//     res.send('Hello Inspections Server!')
-//     next();
-// })
+var inspectionRoutes = require('./src/inspections/inspections.routes');
+app.use('/inspections', inspectionRoutes);
+app.get('/inspections', function (req, res, next) {
+    res.send('Hello Inspections Server!');
+    next();
+});
 require('dotenv').config();
 var port = process.env.PORT || 3000;
 app.use(function (req, res, next) {
