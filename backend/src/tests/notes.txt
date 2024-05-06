@@ -7,9 +7,14 @@
 // From terminal TEST PostgreSQL sign in
 // psql -d test -h localhost -U capstoneuser
 // \c tests
+// \d tests
+
+-----------------------------------------------------
 
 // From terminal PROJECT PostgreSQL sign in
 // PGPASSWORD=KqAiCAkiyXEs0ivOiaGbgzAWNBytlVNM psql -h dpg-co07ge8cmk4c73b650tg-a.ohio-postgres.render.com -U admin perspectiveapp
+
+-----------------------------------------------------
 
 // CREATE ROLE capstone WITH LOGIN SUPERUSER PASSWORD '123456';
 // GRANT ALL PRIVILEGES ON DATABASE perspectiveapp TO admin;
@@ -17,19 +22,19 @@
 // \conninfo
 // \c perspectiveapp
 
-// INSERT INTO tests (param1, param2, param3)
-// VALUES ('YYY', 95, '1920-01-01'), ('ZZZ', 55, '1970-01-01');
-
-// CREATE TABLE points (param1 VARCHAR(255), param2 INT, param3 VARCHAR(255));
 // INSERT INTO tests (param1, param2, param3) VALUES ($1, $2, $3)
 // DELETE FROM tests WHERE id = 3;
 // UPDATE tests SET param1 = $1, param2 = $2, param3 = $3 WHERE id = $4
 // SELECT * FROM tests;
 // SELECT t FROM tests t WHERE t.param1 = $1
 // SELECT * FROM tests WHERE id = $1
+// DROP TABLE points;
+// ALTER TABLE tests DROP COLUMN createdAt;
+// ALTER TABLE tests ALTER COLUMN available SET DEFAULT FALSE;
 
 
 
+-----------------------------------------------------
 
 // TYPE ERROR FIXES
 // npm install -D typescript @types/express @types/node;
@@ -44,3 +49,105 @@
 // sudo chown -R 501:20 "/Users/jarrettzanders/.npm"
 // npm install
 //
+
+-----------------------------------------------------
+
+// DROP TABLE IF EXISTS tests;
+// CREATE TABLE tests (id SERIAL PRIMARY KEY, param1 VARCHAR(255), param2 INT, param3 VARCHAR(255), available BOOLEAN NOT NULL);
+// INSERT INTO tests (param1, param2, param3, available)
+// VALUES ('YYY', 95, '1920-01-01', TRUE), ('ZZZ', 55, '1970-01-01', FALSE);
+
+// DROP TABLE IF EXISTS users;
+// CREATE TABLE users (
+    user_id SERIAL PRIMARY KEY, 
+    user_name VARCHAR(255) NOT NULL, 
+    user_password VARCHAR(255) NOT NULL, 
+    user_email VARCHAR(255) NOT NULL, 
+    is_admin BOOLEAN NOT NULL
+   );
+// INSERT INTO users (user_name, user_password, user_email, is_admin)
+    VALUES 
+    ('Admin1', 'Admin', 'admin1@admin.com', TRUE), 
+    ('User1', 'User', 'user1@user.com', FALSE),
+    ('User2', 'User', 'user2@user.com', FALSE),
+    ('User3', 'User', 'user3@user.com', FALSE),
+    ('Admin2', 'Admin', 'admin2@admin.com', TRUE), 
+    ('User4', 'User', 'user4@user.com', FALSE),
+    ('User5', 'User', 'user5@user.com', FALSE),
+    ('User6', 'User', 'user6@user.com', FALSE);
+
+-----------------------------------------------------
+
+// DROP TABLE IF EXISTS inspections;
+// CREATE TABLE inspections (
+    inspection_id SERIAL PRIMARY KEY, 
+    user_id INT, 
+    inspection_name VARCHAR(255) NOT NULL, 
+    points_count INT NOT NULL DEFAULT 0, 
+    inspection_group VARCHAR(255),
+    inspection_interval INTERVAL NOT NULL DEFAULT '1 day',
+    inspection_created_date DATE NOT NULL DEFAULT CURRENT_DATE,
+    inspection_start_date DATE, 
+    inspection_end_date DATE,
+    inspection_due_date DATE,
+    CONSTRAINT fk_user 
+        FOREIGN KEY(user_id) 
+            REFERENCES users(user_id) 
+                ON DELETE CASCADE
+   );
+// INSERT INTO inspections (user_id, inspection_name, points_count, inspection_group, inspection_interval, inspection_created_date, inspection_start_date, inspection_end_date, inspection_due_date)
+   VALUES 
+    (1, 'Inspection 1', 0, 'Gropup 1 Test Inspections', '15 days', '2025-12-01', '2025-12-02', '2025-12-03', '2025-12-04'),
+    (1, 'Inspection 2', 0, 'Gropup 1 Test Inspections', '30 days', '2025-11-01', '2025-11-02', '2025-11-03', '2025-11-04'),
+    (1, 'Inspection 3', 0, 'Gropup 1 Test Inspections', '90 days', '2025-10-01', '2025-10-02', '2025-10-03', '2025-10-04'),
+    (2, 'Inspection 1', 0, 'Gropup 2 Test Inspections', '15 days', '2025-09-01', '2025-09-02', '2025-09-03', '2025-09-04'),
+    (2, 'Inspection 2', 0, 'Gropup 2 Test Inspections', '30 days', '2025-08-01', '2025-08-02', '2025-08-03', '2025-08-04'),
+    (2, 'Inspection 3', 0, 'Gropup 2 Test Inspections', '90 days', '2025-07-01', '2025-07-02', '2025-07-03', '2025-07-04');
+
+-----------------------------------------------------
+
+// DROP TABLE IF EXISTS points;
+// CREATE TABLE points (
+    point_id SERIAL PRIMARY KEY, 
+    inspection_id INT NOT NULL, 
+    point_name VARCHAR(255) NOT NULL,
+    point_measurement_units VARCHAR(255) NOT NULL,
+    point_is_measured BOOLEAN NOT NULL DEFAULT 'false', 
+    CONSTRAINT fk_inspection 
+        FOREIGN KEY(inspection_id) 
+            REFERENCES inspections(inspection_id) 
+                ON DELETE CASCADE
+   );
+// INSERT INTO points (inspection_id, point_name, point_measurement_units, point_is_measured)
+   VALUES
+    (1, 'Check this 1', '°F', 'true'),
+    (1, 'Check this 2', '°F', 'true'),
+    (1, 'Check this 3', '°F', 'false'),
+    (1, 'Check this 4', '°F', 'false'),
+    (2, 'Check this 1', '°F', 'true'),
+    (2, 'Check this 2', '°F', 'false'),
+    (2, 'Check this 3', '°F', 'false'),
+    (2, 'Check this 4', '°F', 'false');
+
+-----------------------------------------------------
+
+// DROP TABLE IF EXISTS measurements;
+// CREATE TABLE measurements (
+    measurement_id SERIAL PRIMARY KEY,
+    point_id INT NOT NULL,
+    measurement_date TIMESTAMP,
+    measurement_value INT,
+    measurement_is_inbounds BOOLEAN,
+    CONSTRAINT fk_point 
+    FOREIGN KEY(point_id) 
+        REFERENCES points(point_id) 
+            ON DELETE CASCADE
+);
+// INSERT INTO measurements (point_id, measurement_date, measurement_value, measurement_is_inbounds)
+   VALUES
+    (1, '2024-01-01 19:10:25-07', 138, 'false' ),
+    (2, '2024-01-01 19:10:27-07', 140, 'true' ),
+    (5, '2024-01-01 19:10:29-07', 142, 'true' );
+
+-----------------------------------------------------
+

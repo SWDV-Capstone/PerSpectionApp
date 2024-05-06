@@ -3,7 +3,7 @@
     <ion-split-pane content-id="main-content">
       <ion-menu content-id="main-content" type="overlay">
         <ion-content>
-          <ion-list id="inbox-list">
+          <ion-list id="Pages-list">
             <ion-list-header>PerSpection</ion-list-header>
             <ion-note>Build Perfect Inspection</ion-note>
             <ion-menu-toggle :auto-hide="false" v-for="(p, i) in appPages" :key="i">
@@ -37,35 +37,33 @@ import {
 } from '@ionic/vue';
 import { ref } from 'vue';
 import {
-  mailOutline,
-  mailSharp,
   paperPlaneOutline,
   paperPlaneSharp
 } from 'ionicons/icons';
 
 const selectedIndex = ref(0);
 const appPages = [
+  // {
+  //   title: 'Inbox',
+  //   url: '/folder/Inbox',
+  //   iosIcon: mailOutline,
+  //   mdIcon: mailSharp,
+  // },
   {
-    title: 'Inbox',
-    url: '/folder/Inbox',
-    iosIcon: mailOutline,
-    mdIcon: mailSharp,
-  },
-  {
-    title: 'TestPage',
-    url: '/TestPage/TestPage',
+    title: 'Tests',
+    url: '/Tests/Tests',
     iosIcon: paperPlaneOutline,
     mdIcon: paperPlaneSharp,
   },
   {
-    title: 'PointsPage',
-    url: '/PointsPage/PointsPage',
+    title: 'Points',
+    url: '/Points/Points',
     iosIcon: paperPlaneOutline,
     mdIcon: paperPlaneSharp,
   },
   {
-    title: 'InspectionsPage',
-    url: '/InspectionsPage/InspectionsPage',
+    title: 'Inspections',
+    url: '/Inspections/Inspections',
     iosIcon: paperPlaneOutline,
     mdIcon: paperPlaneSharp,
   }
@@ -103,11 +101,11 @@ ion-menu.md ion-note {
   padding-left: 10px;
 }
 
-ion-menu.md ion-list#inbox-list {
+ion-menu.md ion-list#Pages-list {
   border-bottom: 1px solid var(--ion-color-step-150, #d7d8da);
 }
 
-ion-menu.md ion-list#inbox-list ion-list-header {
+ion-menu.md ion-list#Pages-list ion-list-header {
   font-size: 22px;
   font-weight: 600;
 

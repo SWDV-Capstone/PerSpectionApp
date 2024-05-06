@@ -8,25 +8,25 @@ import InspectionsPage from '../views/InspectionsPage.vue';
 const routes: Array<RouteRecordRaw> = [
   {
     path: '',
-    redirect: '/folder/Inbox'
+    redirect: '/Inspections/Inspections'
   },
+  // {
+  //   path: '/folder/:id',
+  //   component: () => import ('../views/FolderPage.vue')
+  // },
   {
-    path: '/folder/:id',
-    component: () => import ('../views/FolderPage.vue')
-  },
-  {
-    path: '/TestPage/:id',
-    name: 'TestPage',
+    path: '/Tests/:id',
+    name: 'Tests',
     component: TestPage
   },
   {
-    path: '/PointsPage/:id',
-    name: 'PointsPage',
+    path: '/Points/:id',
+    name: 'Points',
     component: PointsPage
   },
   {
-    path: '/InspectionsPage/:id',
-    name: 'InspectionsPage',
+    path: '/Inspections/:id',
+    name: 'Inspections',
     component: InspectionsPage
   }
 ]
